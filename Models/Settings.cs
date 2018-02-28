@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace ApiEstudiante.Models
+namespace Web.Models
 {
     public class Settings
     {

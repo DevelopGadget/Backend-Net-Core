@@ -1,13 +1,13 @@
 ﻿
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ApiEstudiante.IRepositorio;
-using ApiEstudiante.Models;
+using Web.IRepositorio;
+using Web.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace ApiEstudiante.Repositorio
+namespace Web.Repositorio
 {
     public class Estudiante_Repositorio : IEstudiante
     {

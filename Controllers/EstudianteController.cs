@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ApiEstudiante.IRepositorio;
-using ApiEstudiante.Models;
+using Web.IRepositorio;
+using Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace Api_Estudiante.Controllers
+namespace Web.Controllers
 {
     [Route("api/[controller]")]
     

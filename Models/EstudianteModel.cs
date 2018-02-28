@@ -2,7 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace ApiEstudiante.Models
+namespace Web.Models
 {
     public class EstudianteModel
     {

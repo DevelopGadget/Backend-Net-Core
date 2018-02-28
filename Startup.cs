@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ApiEstudiante.IRepositorio;
-using ApiEstudiante.Models;
-using ApiEstudiante.Repositorio;
+using Web.IRepositorio;
+using Web.Models;
+using Web.Repositorio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Api_Estudiante
+namespace Web
 {
     public class Startup
     {
@@ -40,7 +40,13 @@ namespace Api_Estudiante
             }
             app.UseCors(data =>
             data.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-            app.UseMvc();
+            app.UseMvc( Routes => {
+                    Routes.MapRoute(
+                        name: "Default",
+                        template: "{controller=Home}/{action=Index}/{id?}"
+                    );
+                }
+);
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿
-using ApiEstudiante.Models;
+using Web.Models;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ApiEstudiante.IRepositorio
+namespace Web.IRepositorio
 {
     public interface IEstudiante
     {

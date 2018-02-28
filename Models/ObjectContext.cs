@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace ApiEstudiante.Models
+namespace Web.Models
 {
     public class ObjectContext
     {
