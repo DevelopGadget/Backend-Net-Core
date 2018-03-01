@@ -6,84 +6,91 @@ using Web.IRepositorio;
 using Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-
+using System.Net;
+using System.Net.Http;
 namespace Web.Controllers
 {
     [Route("api/[controller]")]
-    
     public class EstudianteController : Controller
     {
         private readonly IEstudiante estudiante;
-
         public EstudianteController(IEstudiante estudiante)
         {
             this.estudiante = estudiante;
         }
-
         // GET api/values
         [HttpGet]
         public Task<string> Get()
         {
             return this.GetEstudiante();
         }
-
         private async Task<string> GetEstudiante()
         {
-            var h = await estudiante.Get();
-            if(h.Equals("")){
-                return "No Hay Documentos";
-            } else{
+            if(await estudiante.Get() == null){
+                return "No hay documentos";
+            }else{
                 return JsonConvert.SerializeObject(await estudiante.Get());
             }
         }
-
         // GET api/values/5
         [HttpGet("{id}")]
         public Task<string> Get(string id)
         {
             return this.GetEstudianteID(id);
         }
-
         private async Task<string> GetEstudianteID(string id)
         {
-            return JsonConvert.SerializeObject(await estudiante.Get(id) ?? new EstudianteModel());
+            if(id.Length < 24){
+                return "Verifique el id";
+            }
+            if(await estudiante.Get(id) == null){
+                return "No hay documentos";
+            }
+            return JsonConvert.SerializeObject(await estudiante.Get(id));
         }
-
         // POST api/values
         [HttpPost]
-        public async Task<string> PostAsync([FromBody]EstudianteModel value)
+        public async Task<HttpResponseMessage> PostAsync([FromBody]EstudianteModel value)
         {
-            if(value == null){
-                return "verifique los datos";
-            }else{
+            if(ModelState.IsValid){
                 await estudiante.Add(value);
-                return "Registrado";
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }else{
+               return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task<string> Put(string id, [FromBody] EstudianteModel value)
+        public async Task<HttpResponseMessage> Put(string id, [FromBody] EstudianteModel value)
         {
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id) || id.Length < 24)
             {
-                return "ID Invalido";
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }           
+            if(await estudiante.Get(id) == null){
+               return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
-            value.Id = id;
-            await estudiante.Update(id, value);
-            return "Edición Correcta";
+            if(ModelState.IsValid){
+               value.Id = id;
+                await estudiante.Update(id, value);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }else{
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
         }
-
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task<string> Delete(string id)
+        public async Task<HttpResponseMessage> Delete(string id)
         {
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id) || id.Length < 24)
             {
-                return "ID Invalido";
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
+            if(await estudiante.Get(id) == null){
+               return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
             await estudiante.Remove(id);
-            return "Eliminación Correcta";
-        }
+            return new HttpResponseMessage(HttpStatusCode.OK);
+       }
     }
 }
