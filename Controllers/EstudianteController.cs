@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http;
+
 namespace Web.Controllers
 {
     [Route("api/[controller]")]
@@ -32,6 +33,7 @@ namespace Web.Controllers
                 return JsonConvert.SerializeObject(await estudiante.Get());
             }
         }
+
         // GET api/values/5
         [HttpGet("{id}")]
         public Task<string> Get(string id)
@@ -72,8 +74,12 @@ namespace Web.Controllers
             }
             if(ModelState.IsValid){
                value.Id = id;
-                await estudiante.Update(id, value);
-                return new HttpResponseMessage(HttpStatusCode.OK);
+                var h = await estudiante.Update(id, value);
+                if(h.MatchedCount > 0){
+                    return new HttpResponseMessage(HttpStatusCode.OK);
+                }else{
+                    return new HttpResponseMessage(HttpStatusCode.BadRequest);
+                }
             }else{
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
@@ -89,8 +95,12 @@ namespace Web.Controllers
             if(await estudiante.Get(id) == null){
                return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
-            await estudiante.Remove(id);
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            var h =  await estudiante.Remove(id);
+            if(h.DeletedCount > 0){
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }else{
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }    
        }
     }
 }

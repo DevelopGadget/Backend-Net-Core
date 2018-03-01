@@ -11,7 +11,7 @@ namespace Web.IRepositorio
         Task<IEnumerable<EstudianteModel>> Get();
         Task<EstudianteModel> Get(string _id);
         Task Add(EstudianteModel estudiante);
-        Task<string> Update(string _id, EstudianteModel estudiante);
+        Task<ReplaceOneResult> Update(string _id, EstudianteModel estudiante);
         Task<DeleteResult> Remove(string _id);
         Task<DeleteResult> RemoveAll();
     }

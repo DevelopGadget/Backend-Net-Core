@@ -43,10 +43,9 @@ namespace Web.Repositorio
             return await context.Estudiantes.DeleteManyAsync(new BsonDocument());
         }
 
-        public async Task<string> Update(string _id, EstudianteModel estudiante)
+        public async Task<ReplaceOneResult> Update(string _id, EstudianteModel estudiante)
         {
-            await context.Estudiantes.ReplaceOneAsync(o => o.Id.Equals(_id), estudiante);
-            return "";
+            return await context.Estudiantes.ReplaceOneAsync(o => o.Id.Equals(_id), estudiante);
         }
     }
 }
