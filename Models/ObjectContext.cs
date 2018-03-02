@@ -20,9 +20,9 @@ namespace Web.Models
             if (Client != null) { _database = Client.GetDatabase(Setting.Value.Database); }
 
         }
-            public IMongoCollection<EstudianteModel> Estudiantes
+            public IMongoCollection<EquipoModel> Equipos
             {
-                get { return _database.GetCollection<EstudianteModel>("Estudiante"); }
+                get { return _database.GetCollection<EquipoModel>("Equipos"); }
             }
 
     }

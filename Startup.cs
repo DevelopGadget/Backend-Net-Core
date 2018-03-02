@@ -28,7 +28,7 @@ namespace Web
         {
             services.AddMvc();
             services.Configure<Settings>(o => { o.configuration = (IConfigurationRoot) Configuration; });
-            services.AddTransient<IEstudiante, Estudiante_Repositorio>();
+            services.AddTransient<IEquipo, Equipo_Repositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
