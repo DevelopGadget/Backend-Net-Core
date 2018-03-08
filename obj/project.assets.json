@@ -13066,25 +13066,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gamer\\.nuget\\packages\\": {},
+    "C:\\Users\\FernanPro18\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gamer\\Desktop\\Web-Api\\Web.csproj",
+      "projectUniqueName": "C:\\Users\\FernanPro18\\Desktop\\Web-Api\\Web.csproj",
       "projectName": "Web",
-      "projectPath": "C:\\Users\\Gamer\\Desktop\\Web-Api\\Web.csproj",
-      "packagesPath": "C:\\Users\\Gamer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gamer\\Desktop\\Web-Api\\obj\\",
+      "projectPath": "C:\\Users\\FernanPro18\\Desktop\\Web-Api\\Web.csproj",
+      "packagesPath": "C:\\Users\\FernanPro18\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\FernanPro18\\Desktop\\Web-Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\FernanPro18\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],

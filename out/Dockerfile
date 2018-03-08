@@ -4,4 +4,4 @@ WORKDIR /app
 EXPOSE 80
 ENV ASPNETCORE_URLS=http://*:80
 COPY . ./
-ENTRYPOINT ["dotnet", "Web.dll"]
+CMD ["dotnet", "Web.dll"]

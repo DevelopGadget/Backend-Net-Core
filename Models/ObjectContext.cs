@@ -25,6 +25,11 @@ namespace Web.Models
                 get { return _database.GetCollection<EquipoModel>("Equipos"); }
             }
 
+            public IMongoCollection<JugadoresModel> Jugadores
+            {
+                get { return _database.GetCollection<JugadoresModel>("Jugadores"); }
+            }
+
     }
       
 }
