@@ -3,9 +3,15 @@
   <PropertyGroup>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <DockerComposeProjectPath>docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\registry.heroku.com_api-net_web.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
     <Folder Include="\wwwroot" />
   </ItemGroup>
 
